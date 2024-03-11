@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://c7chs2vqqbtx1"]
+
+[ext_resource type="PackedScene" uid="uid://o4nuh3r3slg4" path="res://scenes/player.tscn" id="1_hun3u"]
+[ext_resource type="MeshLibrary" uid="uid://blmelchqxq4jm" path="res://tileset/tileset.tres" id="2_p8qky"]
+[ext_resource type="PackedScene" uid="uid://cg7af307i507x" path="res://scenes/gnaal_model.tscn" id="3_erx15"]
+[ext_resource type="PackedScene" uid="uid://bstrpw5itki0v" path="res://scenes/actionable.tscn" id="4_on6rw"]
+[ext_resource type="Resource" uid="uid://cmd656xwdvhp8" path="res://dialogues/main.dialogue" id="5_xjg47"]
+[ext_resource type="PackedScene" uid="uid://domvnycrpw4u3" path="res://scenes/door_open.tscn" id="6_f5ovq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7mgkc"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_yfuxr"]
+sky_material = SubResource("ProceduralSkyMaterial_7mgkc")
+
+[sub_resource type="Environment" id="Environment_euihp"]
+background_mode = 2
+sky = SubResource("Sky_yfuxr")
+ambient_light_color = Color(1, 0.94902, 0.8, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.02
+reflected_light_source = 1
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(1, 0.94902, 0.8, 1)
+fog_light_energy = 0.02
+fog_density = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yj5yy"]
+radius = 1.0
+height = 5.7112
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yu3bg"]
+radius = 4.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_45f85"]
+size = Vector3(0.1, 2, 1)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_euihp")
+
+[node name="Player" parent="." instance=ExtResource("1_hun3u")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 1.92457, 0.619469, 2.17924)
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
+floor_block_on_wall = false
+SPEED = 3.0
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_p8qky")
+cell_size = Vector3(1, 1, 1)
+cell_octant_size = 4
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 0, 2, 65535, 65535, 2, 0, 65535, 2, 0, 0, 2, 1, 1, 2, 1, 0, 2, 1, 65535, 2, 1, 65534, 2, 0, 65534, 2, 65535, 65534, 2, 65534, 65534, 2, 65534, 65535, 2, 65534, 0, 2, 65534, 1, 2, 65535, 1, 2, 0, 1, 2, 2, 2, 1441793, 65533, 2, 655361, 65533, 65533, 1048577, 2, 65533, 1, 1, 2, 655360, 0, 2, 655360, 65535, 2, 655360, 65534, 2, 655360, 65533, 1, 1048576, 65533, 0, 1048576, 65533, 65535, 1048576, 65533, 65534, 1048576, 2, 65534, 1441792, 2, 65535, 1441792, 2, 0, 1441792, 2, 1, 1441792, 65534, 65533, 0, 1, 65533, 0, 65535, 65532, 1048576, 65535, 65531, 1048576, 65535, 65530, 1048576, 65535, 65529, 1048576, 65535, 65528, 1048576, 65535, 65527, 1048576, 0, 65532, 1441792, 0, 65531, 1441792, 0, 65530, 1441792, 0, 65529, 1441792, 0, 65528, 1441792, 0, 65527, 1441792, 0, 65533, 1441794, 65535, 65533, 1441794, 65535, 65526, 1048579, 0, 65526, 1441795, 65535, 65525, 1048577, 0, 65525, 1)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Gnaal_model" parent="." instance=ExtResource("3_erx15")]
+transform = Transform3D(-0.147171, 0, -0.261421, 0, 0.3, 0, 0.261421, 0, -0.147171, -2.17355, 0.841644, -2.00904)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Gnaal_model"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gnaal_model/StaticBody3D"]
+transform = Transform3D(1, 0, -2.6954e-08, 0, 1, 0, 2.41117e-08, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_yj5yy")
+
+[node name="Actionable" parent="Gnaal_model" instance=ExtResource("4_on6rw")]
+dialogue_resource = ExtResource("5_xjg47")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gnaal_model/Actionable"]
+shape = SubResource("SphereShape3D_yu3bg")
+
+[node name="Door1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01723, 0, -9.50541)
+
+[node name="DoorOpen" parent="Door1" instance=ExtResource("6_f5ovq")]
+scene_to_load = "res://scenes/level1.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door1/DoorOpen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 1, 2.08165e-12)
+shape = SubResource("BoxShape3D_45f85")
+
+[node name="Door2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.898221, 0, -9.50541)
+
+[node name="DoorOpen" parent="Door2" instance=ExtResource("6_f5ovq")]
+scene_to_load = "res://scenes/level1.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door2/DoorOpen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 1, 2.08165e-12)
+shape = SubResource("BoxShape3D_45f85")

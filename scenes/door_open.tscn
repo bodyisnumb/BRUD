@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://domvnycrpw4u3"]
+
+[ext_resource type="Script" path="res://scripts/door_open.gd" id="1_k7rsx"]
+[ext_resource type="AudioStream" uid="uid://b4omuvsuophiu" path="res://sounds/squeaky_door.mp3" id="2_b2hp5"]
+
+[node name="DoorOpen" type="Area3D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_k7rsx")
+
+[node name="Door_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b2hp5")
+volume_db = -5.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.25
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

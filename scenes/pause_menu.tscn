@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6k0u70vbwtc3"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_m7oux"]
+[ext_resource type="Shader" path="res://shaders/pause_menu.gdshader" id="2_c2lrl"]
+[ext_resource type="FontFile" uid="uid://diiom3p8u0u18" path="res://fonts/MGPixel.otf" id="3_wxw75"]
+[ext_resource type="AudioStream" uid="uid://cejmx527rr61r" path="res://sounds/short_sound_click.mp3" id="4_mcoxw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnyku"]
+shader = ExtResource("2_c2lrl")
+shader_parameter/fisheye_strength = 1.2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h7lhy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g7l0b"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m7oux")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_hnyku")
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 322.0
+offset_bottom = 242.0
+
+[node name="Buttons_MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.729
+anchor_right = 0.175
+anchor_bottom = 0.962
+offset_left = 15.08
+offset_top = -9.96001
+offset_right = 15.0
+offset_bottom = -9.88002
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons_MC"]
+layout_mode = 2
+alignment = 1
+
+[node name="Restart" type="Button" parent="Buttons_MC/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wxw75")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h7lhy")
+text = "Reset"
+flat = true
+
+[node name="Quit" type="Button" parent="Buttons_MC/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wxw75")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g7l0b")
+text = "Quit"
+flat = true
+
+[node name="Brud_MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.625
+anchor_top = 0.046
+anchor_right = 0.984
+anchor_bottom = 0.262
+offset_left = -5.0
+offset_top = 24.96
+offset_right = -4.88001
+offset_bottom = 25.12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Brud_MC"]
+layout_mode = 2
+alignment = 1
+
+[node name="Brud_text" type="RichTextLabel" parent="Brud_MC/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_wxw75")
+theme_override_fonts/bold_font = ExtResource("3_wxw75")
+theme_override_fonts/italics_font = ExtResource("3_wxw75")
+theme_override_fonts/bold_italics_font = ExtResource("3_wxw75")
+theme_override_fonts/mono_font = ExtResource("3_wxw75")
+theme_override_font_sizes/normal_font_size = 50
+text = "BRUD"
+fit_content = true
+
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mcoxw")
+volume_db = -15.0
+
+[connection signal="mouse_entered" from="Buttons_MC/VBoxContainer/Restart" to="." method="_on_restart_mouse_entered"]
+[connection signal="pressed" from="Buttons_MC/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="mouse_entered" from="Buttons_MC/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="Buttons_MC/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

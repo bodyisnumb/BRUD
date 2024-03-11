@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://o4nuh3r3slg4"]
+
+[ext_resource type="Script" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="1_0liec"]
+[ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="2_m0xek"]
+[ext_resource type="AudioStream" uid="uid://bg2spcxr4vlmh" path="res://sounds/walking_on_wood.mp3" id="3_jsfvv"]
+[ext_resource type="PackedScene" uid="uid://c6k0u70vbwtc3" path="res://scenes/pause_menu.tscn" id="4_iofjh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3kbn3"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8h4t0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w3ocu"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_0liec")
+HEAD_BOB_FREQUENCY = 0.25
+HEAD_BOB_AMPLITUDE = 0.02
+
+[node name="Head" parent="." instance=ExtResource("2_m0xek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.670618, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.131128, 0.43986)
+light_color = Color(1, 0.94902, 0.8, 1)
+spot_range = 11.8406
+spot_angle = 63.9832
+
+[node name="ActionableFinder" type="Area3D" parent="Head"]
+collision_layer = 0
+collision_mask = 48
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/ActionableFinder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -1)
+shape = SubResource("BoxShape3D_3kbn3")
+
+[node name="PlayerColl" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8h4t0")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_w3ocu")
+
+[node name="WalkingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jsfvv")
+volume_db = -10.0
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_iofjh")]
+visible = false

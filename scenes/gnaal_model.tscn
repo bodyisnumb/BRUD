@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg7af307i507x"]
+
+[ext_resource type="PackedScene" uid="uid://ku756q3yi4t0" path="res://models/Gnaal.glb" id="1_g6nfl"]
+
+[node name="Gnaal_model" instance=ExtResource("1_g6nfl")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(-0.00151703, 0.000698796, -0.266695, 0.96378)
+bones/2/rotation = Quaternion(0.0005433, 0.0162508, 0.999619, 0.0223192)
+bones/3/rotation = Quaternion(-0.0220072, -0.000125952, -0.0149669, 0.999646)
+bones/6/rotation = Quaternion(-0.000856971, 0.0162386, 0.999048, -0.0404704)
+bones/7/rotation = Quaternion(-0.0220072, 0.000125956, 0.0149669, 0.999646)
+
+[node name="AnimationPlayer" parent="." index="1"]
+speed_scale = 0.284
