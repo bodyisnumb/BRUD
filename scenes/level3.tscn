@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://bco3dexetfsac"]
+
+[ext_resource type="PackedScene" uid="uid://o4nuh3r3slg4" path="res://scenes/player.tscn" id="1_y24xq"]
+[ext_resource type="MeshLibrary" uid="uid://blmelchqxq4jm" path="res://tileset/tileset.tres" id="2_8bl3x"]
+[ext_resource type="PackedScene" uid="uid://cg7af307i507x" path="res://scenes/gnaal_model.tscn" id="3_cbhk5"]
+[ext_resource type="PackedScene" uid="uid://bstrpw5itki0v" path="res://scenes/actionable.tscn" id="4_4rrtu"]
+[ext_resource type="Resource" uid="uid://cmd656xwdvhp8" path="res://dialogues/main.dialogue" id="5_e8xaj"]
+[ext_resource type="PackedScene" uid="uid://domvnycrpw4u3" path="res://scenes/door_open.tscn" id="6_taypu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7mgkc"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_yfuxr"]
+sky_material = SubResource("ProceduralSkyMaterial_7mgkc")
+
+[sub_resource type="Environment" id="Environment_euihp"]
+background_mode = 2
+sky = SubResource("Sky_yfuxr")
+ambient_light_color = Color(1, 0.94902, 0.8, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.02
+reflected_light_source = 1
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(1, 0.94902, 0.8, 1)
+fog_light_energy = 0.02
+fog_density = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yj5yy"]
+radius = 1.0
+height = 5.7112
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yu3bg"]
+radius = 4.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_45f85"]
+size = Vector3(0.1, 2, 1)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_euihp")
+
+[node name="Player" parent="." instance=ExtResource("1_y24xq")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 1.92457, 0.619469, 2.17924)
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
+floor_block_on_wall = false
+SPEED = 3.0
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_8bl3x")
+cell_size = Vector3(1, 1, 1)
+cell_octant_size = 4
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 1048576, 1, 1, 2, 1, 0, 2, 1, 65535, 2, 1, 65534, 2, 0, 1, 1048576, 2, 2, 1441793, 2, 65533, 1441792, 1, 2, 655360, 2, 65534, 1441792, 2, 65535, 1441792, 2, 0, 1441792, 2, 1, 1441792, 0, 2, 655361, 0, 65535, 1048576, 65535, 65534, 655360, 0, 65534, 1441794, 1, 65533, 1441794, 2, 65532, 1, 0, 65532, 0, 65535, 65532, 0, 0, 65533, 1441794, 65535, 65533, 1441794, 1, 65532, 3, 65534, 65533, 2, 65533, 65533, 2, 65532, 65533, 2, 65531, 65533, 2, 65530, 65533, 2, 65529, 65533, 2, 65528, 65533, 2, 65527, 65533, 2, 65526, 65533, 2, 65525, 65533, 2, 65524, 65533, 2, 65523, 65533, 2, 65522, 65533, 2, 65521, 65533, 2, 65520, 65533, 2, 65534, 65532, 0, 65533, 65532, 0, 65532, 65532, 0, 65531, 65532, 0, 65530, 65532, 0, 65529, 65532, 0, 65528, 65532, 0, 65527, 65532, 0, 65520, 65532, 0, 65521, 65532, 0, 65522, 65532, 0, 65523, 65532, 0, 65524, 65532, 0, 65525, 65532, 0, 65526, 65532, 0, 65534, 65534, 655360, 65533, 65534, 655360, 65532, 65534, 655360, 65531, 65534, 655360, 65530, 65534, 655360, 65529, 65534, 655360, 65528, 65534, 655360, 65527, 65534, 655360, 65526, 65535, 1441792, 65524, 65535, 1048576, 65525, 0, 655360, 65526, 0, 1441793, 65524, 0, 655361, 65525, 65535, 655362, 65523, 65534, 655360, 65526, 65534, 655362, 65525, 65534, 655362, 65524, 65534, 655362, 65522, 65534, 655360, 65521, 65534, 655360, 65520, 65534, 655360, 65519, 65534, 655360, 65518, 65534, 655360, 65517, 65534, 655360, 65519, 65532, 0, 65518, 65532, 0, 65517, 65532, 0, 65516, 65532, 0, 65515, 65532, 0, 65514, 65532, 0, 65513, 65532, 0, 65512, 65532, 0, 65511, 65532, 0, 65510, 65532, 0, 65516, 65534, 655360, 65515, 65534, 655360, 65514, 65534, 655360, 65513, 65534, 655360, 65512, 65534, 655360, 65511, 65534, 655360, 65510, 65534, 655360, 65509, 65534, 655360, 65508, 65534, 655360, 65509, 65531, 1441792, 65507, 65531, 1048576, 65507, 65530, 1048577, 65509, 65530, 1, 65508, 65530, 0, 65508, 65531, 655362, 65509, 65532, 655362, 65508, 65532, 655362, 65507, 65532, 655362, 65507, 65533, 655362, 65508, 65533, 655362, 65509, 65533, 655362, 65510, 65533, 655362, 65511, 65533, 655362, 65512, 65533, 2, 65513, 65533, 2, 65514, 65533, 2, 65515, 65533, 2, 65516, 65533, 2, 65517, 65533, 2, 65518, 65533, 2, 65519, 65533, 2, 65506, 65532, 0, 65507, 65534, 655360, 65506, 65534, 655360, 65505, 65532, 0, 65505, 65534, 655360, 65506, 65533, 655362, 65505, 65533, 655362, 65504, 65533, 655362, 65503, 65533, 655362, 65502, 65533, 655362, 65501, 65533, 655362, 65500, 65533, 655362, 65499, 65533, 655362, 65498, 65533, 655362, 65497, 65533, 655362, 65496, 65533, 655362, 65495, 65533, 655362, 65494, 65533, 655362, 65493, 65533, 1048579, 65493, 65534, 655361, 65493, 65532, 1048577, 65494, 65532, 0, 65495, 65532, 0, 65496, 65532, 0, 65497, 65532, 0, 65498, 65532, 0, 65499, 65532, 0, 65500, 65532, 0, 65501, 65532, 0, 65502, 65532, 0, 65503, 65532, 0, 65504, 65532, 0, 65504, 65534, 655360, 65503, 65534, 655360, 65502, 65534, 655360, 65501, 65534, 655360, 65500, 65534, 655360, 65499, 65534, 655360, 65498, 65534, 655360, 65497, 65534, 655360, 65496, 65534, 655360, 65495, 65534, 655360, 65494, 65534, 655360)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Gnaal_model" parent="." instance=ExtResource("3_cbhk5")]
+transform = Transform3D(-0.220571, 0, -0.203344, 0, 0.3, 0, 0.203344, 0, -0.220571, -10.0541, 0.841644, -0.0283644)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Gnaal_model"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gnaal_model/StaticBody3D"]
+transform = Transform3D(1, 0, -2.6954e-08, 0, 1, 0, 2.41117e-08, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_yj5yy")
+
+[node name="Actionable" parent="Gnaal_model" instance=ExtResource("4_4rrtu")]
+dialogue_resource = ExtResource("5_e8xaj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gnaal_model/Actionable"]
+shape = SubResource("SphereShape3D_yu3bg")
+
+[node name="Door1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.8964, 0, -2.50356)
+
+[node name="DoorOpen" parent="Door1" instance=ExtResource("6_taypu")]
+scene_to_load = "res://scenes/level1.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door1/DoorOpen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 1, 2.08165e-12)
+shape = SubResource("BoxShape3D_45f85")
+
+[node name="Door2" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -27.4996, 0, -5.99205)
+
+[node name="DoorOpen" parent="Door2" instance=ExtResource("6_taypu")]
+scene_to_load = "res://scenes/level1.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door2/DoorOpen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 1, 2.08165e-12)
+shape = SubResource("BoxShape3D_45f85")

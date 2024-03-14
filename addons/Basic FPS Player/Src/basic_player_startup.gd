@@ -74,6 +74,9 @@ var head_start_pos : Vector3
 var tick = 0
 
 func _ready():
+	NoteCounter.pistol_signal.connect(pistol_end)
+	NoteCounter.backpack_signal.connect(backpack_end)
+	
 	if Engine.is_editor_hint():
 		return
 
@@ -197,3 +200,19 @@ func pauseMenu():
 		Engine.time_scale = 0
 
 	paused = !paused
+
+func pistol_end():
+	$WinScreen.show()
+	$EndTimer.start()
+	$WinScreen/Pistol_sound.play()
+	$EndTimer.timeout.connect(_on_timer_timeout)
+
+func backpack_end():
+	if NoteCounter.collected_notes_count == 0:
+		$EscapeScreen.show()
+		$EndTimer.start()
+		$EscapeScreen/BackpackSound.play()
+		$EndTimer.timeout.connect(_on_timer_timeout)
+
+func _on_timer_timeout():
+	get_tree().quit()

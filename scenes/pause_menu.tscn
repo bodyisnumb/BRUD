@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_m7oux"]
 [ext_resource type="Shader" path="res://shaders/pause_menu.gdshader" id="2_c2lrl"]
-[ext_resource type="FontFile" uid="uid://diiom3p8u0u18" path="res://fonts/MGPixel.otf" id="3_wxw75"]
+[ext_resource type="FontFile" uid="uid://diiom3p8u0u18" path="res://fonts/MGPixel.otf" id="3_0xg1e"]
 [ext_resource type="AudioStream" uid="uid://cejmx527rr61r" path="res://sounds/short_sound_click.mp3" id="4_mcoxw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hnyku"]
@@ -49,14 +49,14 @@ alignment = 1
 
 [node name="Restart" type="Button" parent="Buttons_MC/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wxw75")
+theme_override_fonts/font = ExtResource("3_0xg1e")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h7lhy")
 text = "Reset"
 flat = true
 
 [node name="Quit" type="Button" parent="Buttons_MC/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wxw75")
+theme_override_fonts/font = ExtResource("3_0xg1e")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g7l0b")
 text = "Quit"
 flat = true
@@ -79,11 +79,11 @@ alignment = 1
 
 [node name="Brud_text" type="RichTextLabel" parent="Brud_MC/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("3_wxw75")
-theme_override_fonts/bold_font = ExtResource("3_wxw75")
-theme_override_fonts/italics_font = ExtResource("3_wxw75")
-theme_override_fonts/bold_italics_font = ExtResource("3_wxw75")
-theme_override_fonts/mono_font = ExtResource("3_wxw75")
+theme_override_fonts/normal_font = ExtResource("3_0xg1e")
+theme_override_fonts/bold_font = ExtResource("3_0xg1e")
+theme_override_fonts/italics_font = ExtResource("3_0xg1e")
+theme_override_fonts/bold_italics_font = ExtResource("3_0xg1e")
+theme_override_fonts/mono_font = ExtResource("3_0xg1e")
 theme_override_font_sizes/normal_font_size = 50
 text = "BRUD"
 fit_content = true
