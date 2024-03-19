@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dagsctnw4rpjy"]
+[gd_scene load_steps=19 format=3 uid="uid://dagsctnw4rpjy"]
 
 [ext_resource type="PackedScene" uid="uid://o4nuh3r3slg4" path="res://scenes/player.tscn" id="1_aeb3s"]
 [ext_resource type="MeshLibrary" uid="uid://blmelchqxq4jm" path="res://tileset/tileset.tres" id="2_l8fix"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bstrpw5itki0v" path="res://scenes/actionable.tscn" id="4_rlte0"]
 [ext_resource type="Resource" uid="uid://cmd656xwdvhp8" path="res://dialogues/main.dialogue" id="5_2ticq"]
 [ext_resource type="PackedScene" uid="uid://domvnycrpw4u3" path="res://scenes/door_open.tscn" id="6_g7xsk"]
+[ext_resource type="PackedScene" uid="uid://bijn8r2bbpikp" path="res://models/pistol.glb" id="7_at518"]
+[ext_resource type="PackedScene" uid="uid://j2et3n5j0fql" path="res://models/wooden_bench.glb" id="8_xr6xg"]
+[ext_resource type="PackedScene" uid="uid://cbvvuqnslbm72" path="res://models/backpack.glb" id="9_plcwu"]
+[ext_resource type="Script" path="res://scripts/backpack.gd" id="10_mbbdp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7mgkc"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -38,6 +42,12 @@ radius = 4.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_45f85"]
 size = Vector3(0.1, 2, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_07yrr"]
+size = Vector3(2, 4, 2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_awdv5"]
+radius = 2.0
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -61,7 +71,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Gnaal_model" parent="." instance=ExtResource("3_dhsgq")]
-transform = Transform3D(0.3, -2.09272e-16, -4.57379e-24, -4.57379e-24, -1.31134e-08, 0.3, -2.09272e-16, -0.3, -1.31134e-08, 2.36598, 0.0443097, -0.896636)
+transform = Transform3D(0.253385, -0.160611, -7.02052e-09, -2.22393e-23, -1.31134e-08, 0.3, -0.160611, -0.253385, -1.10758e-08, 2.36919, 0.0443097, -1.26932)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Gnaal_model"]
 
@@ -71,6 +81,7 @@ shape = SubResource("CapsuleShape3D_yj5yy")
 
 [node name="Actionable" parent="Gnaal_model" instance=ExtResource("4_rlte0")]
 dialogue_resource = ExtResource("5_2ticq")
+dialogue_start = "gnaal5"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gnaal_model/Actionable"]
 shape = SubResource("SphereShape3D_yu3bg")
@@ -84,3 +95,53 @@ scene_to_load = "res://scenes/level1.tscn"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door1/DoorOpen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 1, 2.08165e-12)
 shape = SubResource("BoxShape3D_45f85")
+
+[node name="wooden_bench" parent="." instance=ExtResource("8_xr6xg")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.82617, -0.0750064, 1.16486)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wooden_bench"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wooden_bench/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_07yrr")
+
+[node name="wooden_bench2" parent="." instance=ExtResource("8_xr6xg")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.82617, -0.0750064, 2.03853)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wooden_bench2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wooden_bench2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_07yrr")
+
+[node name="wooden_bench3" parent="." instance=ExtResource("8_xr6xg")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.82617, -0.0750064, 0.245601)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wooden_bench3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wooden_bench3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_07yrr")
+
+[node name="pistol" parent="." instance=ExtResource("7_at518")]
+transform = Transform3D(-3.51695e-09, -0.0804583, -0.059384, 0.1, -4.37114e-09, -3.48787e-17, -2.59576e-09, -0.059384, 0.0804583, -1.76355, 0.362565, 2.05147)
+
+[node name="Actionable" parent="pistol" instance=ExtResource("4_rlte0")]
+dialogue_resource = ExtResource("5_2ticq")
+dialogue_start = "pistol"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pistol/Actionable"]
+shape = SubResource("SphereShape3D_awdv5")
+
+[node name="backpack" parent="." instance=ExtResource("9_plcwu")]
+transform = Transform3D(0.225101, 0, -0.108764, 0, 0.25, 0, 0.108764, 0, 0.225101, -1.83004, 0.00499994, 0.474238)
+visible = false
+script = ExtResource("10_mbbdp")
+
+[node name="Actionable" parent="backpack" instance=ExtResource("4_rlte0")]
+transform = Transform3D(1, 0, 1.80514e-08, 0, 1, 0, -2.33047e-08, 0, 1, 0.675268, 0, 0.0502)
+dialogue_resource = ExtResource("5_2ticq")
+dialogue_start = "backpack"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="backpack/Actionable"]
+shape = SubResource("SphereShape3D_awdv5")

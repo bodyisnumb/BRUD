@@ -1,27 +1,27 @@
 ~ gnaal1
 
 Gnaal: A child... again? So peculiar. Well, the rules are the same for every body.
-Gnaal: You have to make a choice. That is, if you want to. After all, it is your choice.
+Gnaal: You have to make a choice. That is if you want to. After all, it is your choice.
 
 => END
 
 ~ gnaal2
 
-Gnaal: Be quiet now... child. I can feel it's presence in the center of this room.
-Gnaal: Hug the wall and move slowly... That is, if you want to make it out of this one.
+Gnaal: Be quiet now... child. I can feel its presence in the center of this room.
+Gnaal: Hug the wall and move slowly... That is if you want to make it out of this one.
 
 => END
 
 ~ gnaal3
 
 Gnaal: That other door broke down indeed. But no worries, child!
-Gnaal: There were plenty more... I just don't... seem to see it?
+Gnaal: There were plenty more... I just don't... seem to see it.
 
 => END
 
 ~ gnaal4
 
-Gnaal: So many choices, oh, so little time...
+Gnaal: So many ways, oh, so little time...
 Gnaal: For you, that is, my summer child.
 
 => END
@@ -35,55 +35,55 @@ Gnaal: Eternal... slumber...
 
 ~ page1
 
-Page 1: 12 of May, year 1999
-Page 1: My name is Marina Kolisnik, i'm a teacher in elementary school №2 of city Nadvirna.
-Page 1: Government led evacuation have failed. Blizzard came today.
+Page: 12 of May, year 1999
+Page: My name is Marina Kolisnik, I'm a teacher in elementary school №2 of city Nadvirna.
+Page: Government-led evacuation has failed. A blizzard came today.
 do NoteCounter.increment_note_count()
 
 => END
 
 ~ page2
 
-Page 2: 14 of May, year 1999
-Page 2: Today we had to eat our last can of food. School was never prepared for such emergency.
-Page 2: Thanks god water is of no problem... Nastenka helps me to calm down other kids.
+Page: 14 of May, year 1999
+Page: Today we had to eat our last can of food. The school was never prepared for such an emergency.
+Page: Thanks god water is of no problem... Nastenka helps me to calm down other kids.
 do NoteCounter.increment_note_count()
 
 => END
 
 ~ page3
 
-Page 3: 16 of May, year 1999
-Page 3: Nobody came. I thought atleast parents could find a way to rescue us.
-Page 3: My father always told me about the military base on the outskirts of the city.
-Page 3: We have to reach it ourselves, somebody must be in there.
+Page: 16 of May, year 1999
+Page: Nobody came. I thought at least parents could find a way to rescue us.
+Page: My father always told me about the military base on the outskirts of the city.
+Page: We have to reach it ourselves, somebody must be in there.
 do NoteCounter.increment_note_count()
 
 => END
 
 ~ page4
 
-Page 4: 17 of May, year 1999
-Page 4: Kids are crying constantly. I understand them. Seroja searches abandoned houses for food and clothes.
-Page 4: This far we have found almost nothing. We have to find this base as soon as possible.
+Page: 17 of May, year 1999
+Page: Kids are crying constantly. I understand them. Seroja searches abandoned houses for food and clothes.
+Page: This far we have found almost nothing. We have to find this base as soon as possible.
 do NoteCounter.increment_note_count()
 
 => END
 
 ~ page5
 
-Page 5: 18 of May, year 1999
-Page 5: We finally did it! But what is this? Only two soldiers... and one pistol? We can't even hunt with that.
-Page 5: At least we have canned food and blankets for kids safety. Soldiers wanted to talk with me in private.
+Page: 18 of May, year 1999
+Page: We finally did it! But what is this? Only two soldiers... and one pistol? We can't even hunt with that.
+Page: At least we have canned food and blankets for kids' safety. Soldiers wanted to talk with me in private.
 do NoteCounter.increment_note_count()
 
 => END
 
 ~ page6
 
-Page 6: 19 of May, year 1999
-Page 6: Soldiers have... had a working radio. The last time they had communication was two days ago.
-Page 6: We are safe, for now. Pasha and Tanya fell asleap. I'm so happy they are calm now.
+Page: 19 of May, year 1999
+Page: Soldiers have... had a working radio. The last time they had communication was two days ago.
+Page: We are safe, for now. Pasha and Tanya fell asleep. I'm so happy they are calm now.
 do NoteCounter.increment_note_count()
 
 
@@ -91,18 +91,18 @@ do NoteCounter.increment_note_count()
 
 ~ page7
 
-Page 7: 29 of May, year 1999
-Page 7: We heard soldiers shouting and then shooting in the other part of the building.
-Page 7: Kids ran away, i had to go after them. I don't remember much, but Seroja have found a bus stop!
-Page 7: Road looks like another bus had came through just an hour ago, we are finally saved!
+Page: 29 of May, year 1999
+Page: We heard soldiers shouting and then shooting in the other part of the building.
+Page: Kids ran away, and I had to go after them. I don't remember much, but Seroja has found a bus stop!
+Page: The road looks like another bus had come through just an hour ago, we are finally saved!
 do NoteCounter.increment_note_count()
 
 => END
 
 ~ page8
 
-Page 8: 31 of May, year 1999
-Page 8: Bus never came. I'm crying constantly... only this time... i'm the only one able to.
+Page: 31 of May, year 1999
+Page: Bus never came. I'm crying constantly... only this time... I'm the only one able to.
 do NoteCounter.increment_note_count()
 
 => END

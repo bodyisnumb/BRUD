@@ -8,5 +8,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if NoteCounter.collected_notes_count == 0:
+	if NoteCounter.collected_notes_count == 8:
 		self.show()

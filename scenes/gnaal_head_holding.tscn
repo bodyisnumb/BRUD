@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs75ejqogyhgw"]
+
+[ext_resource type="PackedScene" uid="uid://d3kqivqa8nefe" path="res://models/Gnaal_poses.glb" id="1_lisft"]
+
+[node name="Gnaal_poses" instance=ExtResource("1_lisft")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(-0.000522511, -1.77343e-07, -9.12271e-06, 1)
+bones/1/rotation = Quaternion(0.0141031, -0.0200735, 0.0134548, 0.999609)
+bones/2/rotation = Quaternion(-0.0994621, -0.849951, 0.514695, 0.0527189)
+bones/3/rotation = Quaternion(-0.736547, 0.224926, -0.13385, 0.623691)
+bones/4/rotation = Quaternion(1.09803e-06, -0.000522345, 1, -9.1173e-06)
+bones/6/rotation = Quaternion(0.160154, -0.87934, 0.448416, -0.00597131)
+bones/7/rotation = Quaternion(-0.592874, -0.423373, 0.360175, 0.582692)
+bones/8/rotation = Quaternion(-6.89179e-07, -0.000522345, 1, -9.11637e-06)

@@ -208,7 +208,7 @@ func pistol_end():
 	$EndTimer.timeout.connect(_on_timer_timeout)
 
 func backpack_end():
-	if NoteCounter.collected_notes_count == 0:
+	if NoteCounter.collected_notes_count == 8:
 		$EscapeScreen.show()
 		$EndTimer.start()
 		$EscapeScreen/BackpackSound.play()
